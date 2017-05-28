@@ -9,9 +9,17 @@
     [potemkin "0.4.3"]]
   :profiles {
     :docs {
+      :dependencies [
+        [systems.billo/superhero-codox-theme "0.3.0-SNAPSHOT"]]
       :plugins [
-        [lein-marginalia "0.9.0"]]}
-      :codox {}
+        [lein-codox "0.10.3"]
+        [lein-marginalia "0.9.0"]]
+      :codox {
+        :project {:name "inet-address"}
+        :themes [:superhero]
+        :output-path "docs/current"
+        :doc-paths ["resources/docs"]
+        :metadata {:doc/format :markdown}}}
     :dev {
       :dependencies [
         [clojusc/trifl "0.1.0-SNAPSHOT"]
@@ -29,5 +37,6 @@
                     (println (slurp "resources/text/loading.txt")))}}}
   :aliases {
     "docs" ["with-profile" "+docs" "do"
-      ["marg"]]
+      ["marg" "--dir" "docs/current" "--file" "marginalia.html"]
+      ["codox"]]
     })
