@@ -14,7 +14,76 @@ idioms.
 
 ## Usage
 
-FIXME
+Require the bits of `inet-address` you will need:
+
+```clj
+(require '[clojure.test :refer :all]
+         '[inet.address :as inet]
+         '[inet.address.six :as inet6]
+         '[inet.interface :as netface]))
+```
+
+Then make the calls as needed, e.g.:
+
+```clj
+=> (inet/by-address "testhost" [1 2 3 4])
+
+```
+```clj
+#object[java.net.Inet4Address 0x7d5e0016 "testhost/1.2.3.4"]
+```
+
+```clj
+=> (inet6/by-address
+     "testhost"
+     [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]
+     0)
+```
+```clj
+#object[java.net.Inet6Address 0x19487de9 "testhost/1:203:405:607:809:a0b:c0d:e0f%0"]
+```
+```clj
+(inet/reachable? (inet/localhost) 100) ; timeout after 100 milliseconds
+```
+```clj
+true
+```
+Or, for network interfaces:
+
+```clj
+=> (netface/network-interfaces)
+```
+```clj
+[#object[java.net.NetworkInterface 0x2e79299 "name:veth06a443d (veth06a443d)"]
+ #object[java.net.NetworkInterface 0x66fe36f4 "name:docker0 (docker0)"]
+ #object[java.net.NetworkInterface 0x2eda7437 "name:wlp3s0 (wlp3s0)"]
+ #object[java.net.NetworkInterface 0x4916292d "name:lo (lo)"]]
+```
+```clj
+=> (netface/by-name "docker0")
+```
+```clj
+#object[java.net.NetworkInterface 0x69fdab5e "name:docker0 (docker0)"]
+```
+```clj
+=> (netface/up? (netface/by-name "docker0"))
+```
+```clj
+true
+```
+```clj
+=> (netface/hardware-address (netface/by-name "docker0"))
+```
+```clj
+["02" "42" "b4" "b7" "0b" "5f"]
+```
+```clj
+=> (netface/inet-addresses (netface/by-name "docker0"))
+```
+```clj
+[#object[java.net.Inet6Address 0x36fad3e9 "/fe80:0:0:0:42:b4ff:feb7:b5f%docker0"]
+ #object[java.net.Inet4Address 0x1dde9ac5 "/172.17.0.1"]]
+```
 
 
 ## License
