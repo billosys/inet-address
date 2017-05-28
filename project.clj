@@ -1,4 +1,4 @@
-(defproject systems.billo/inet-address "0.1.0-SNAPSHOT"
+(defproject systems.billo/inet-address "0.1.0"
   :description "A Clojure wrapper for the family of Java InetAddress classes"
   :url "https://github.com/billosys/inet-address"
   :license {
@@ -44,8 +44,10 @@
     "check-deps" ["with-profile" "+test" "ancient" "check" "all"]
     "lint" ["with-profile" "+test" "kibit"]
     "docs" ["with-profile" "+docs" "do"
-      ["marg" "--dir" "docs/current" "--file" "marginalia.html"]
-      ["codox"]]
+      ["codox"]
+      ["marg" "--dir" "docs/current"
+              "--file" "marginalia.html"
+              "--name" "inet-address"]]
     "build" ["with-profile" "+test" "do"
       ["check-deps"]
       ["lint"]
