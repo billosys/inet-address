@@ -83,7 +83,8 @@
   (multicast-address? [this]
     "Utility routine to check if the InetAddress is an IP multicast address.")
   (reachable? [this timeout] [this net-iface ttl timeout]
-    "Test whether that address is reachable.")
+    "Test whether that address is reachable. The units of `timeout` is
+    milliseconds.")
   (site-local-address? [this]
     "Utility routine to check if the InetAddress is a site local address."))
 

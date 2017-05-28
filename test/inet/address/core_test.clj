@@ -1,6 +1,7 @@
 (ns inet.address.core-test
-  (:require [clojure.test :refer :all]
-            [inet.address.core :as inet-core]))
+  (:require
+    [clojure.test :refer :all]
+    [inet.address.core :as inet-core]))
 
 (defn make-test-host
   []

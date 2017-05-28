@@ -1,6 +1,6 @@
 (ns inet.address.four
   (:require
-    [inet.address.core :as address-core]
+    [inet.address.core :as ipnet-core]
     [potemkin :refer [import-vars]])
   (:import
     (java.net Inet4Address)))
@@ -56,14 +56,14 @@
 ;;;   Implementation   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(extend Inet4Address address-core/Address address-core/behaviour)
+(extend Inet4Address ipnet-core/Address ipnet-core/behaviour)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Aliases   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (import-vars
-  [address-core
+  [ipnet-core
    ;; behaviour
    address
    canonical-hostname
