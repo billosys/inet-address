@@ -11,6 +11,10 @@
 (deftest address->string
   (is (= "testhost/1.2.3.4" (str (make-test-host)))))
 
+(deftest equality
+  (is (= (make-test-host)
+         (make-test-host))))
+
 (deftest hash-code
   (let [address (make-test-host)]
     (is (= (hash address)
