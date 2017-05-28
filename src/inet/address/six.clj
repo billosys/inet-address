@@ -1,6 +1,6 @@
 (ns inet.address.six
   (:require
-    [inet.address.core :as address-core]
+    [inet.address.core :as ipnet-core]
     [potemkin :refer [import-vars]])
   (:import
     (java.net Inet6Address)))
@@ -21,7 +21,7 @@
   "Returns an `Inet6Address`.
 
   This creates an `Inet6Address` in a similar manner as with the 2-arity
-  `address-core/by-address` except that a third argument is provided:
+  `ipnet-core/by-address` except that a third argument is provided:
 
   * either the IPv6 scope id is set by passing an integer represenging the
     scope id, or
@@ -56,47 +56,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defprotocol IPV6Address
-  (address [this]
-    "Returns the raw IP address of this Inet6Address object as a Clojure
-    vector.")
-  (canonical-hostname [this]
-    "Gets the fully qualified domain name for this IP address.")
-  (host-address [this]
-    "Returns the IP address string in textual presentation.")
-  (hostname [this]
-    "Gets the host name for this IP address.")
   (scoped-interface [this]
     "Returns the scoped interface, if this instance was created with with a
     scoped interface.")
   (scope-id [this]
     "Returns the numeric scopeId, if this instance is associated with an
     interface.")
-  (any-local-address? [this]
-    "Utility routine to check if the Inet6Address in a wildcard address.")
   (ipv4-compatible-address? [this]
     "Utility routine to check if the InetAddress is an IPv4 compatible IPv6
-    address.")
-  (link-local-address? [this]
-    "Utility routine to check if the Inet6Address is an link local address.")
-  (loopback-address? [this]
-    "Utility routine to check if the Inet6Address is a loopback address.")
-  (mc-global? [this]
-    "Utility routine to check if the multicast address has global scope.")
-  (mc-link-local? [this]
-    "Utility routine to check if the multicast address has link scope.")
-  (mc-node-local? [this]
-    "Utility routine to check if the multicast address has node scope.")
-  (mc-org-local? [this]
-    "Utility routine to check if the multicast address has organization
-    scope.")
-  (mc-site-local? [this]
-    "Utility routine to check if the multicast address has site scope.")
-  (multicast-address? [this]
-    "Utility routine to check if the Inet6Address is an IP multicast address.")
-  (reachable? [this timeout] [this net-iface ttl timeout]
-    "Test whether that address is reachable.")
-  (site-local-address? [this]
-    "Utility routine to check if the Inet6Address is a site local address."))
+    address."))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Implementation   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,12 +72,13 @@
 
 (def behaviour
   (merge
-    address-core/behaviour
+    ipnet-core/behaviour
     {:scoped-interface (fn [this] (.getScopedInterface this))
      :scope-id (fn [this] (.getScopeId this))
      :ipv4-compatible-address? (fn [this] (.isIPv4CompatibleAddress this))}))
 
 (extend Inet6Address IPV6Address behaviour)
+(extend Inet6Address ipnet-core/Address behaviour)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Constructors   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -122,7 +91,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (import-vars
-  [address-core
+  [ipnet-core
    ;; behaviour
    address
    canonical-hostname
