@@ -63,7 +63,7 @@
     "Gets the host name for this IP address.")
   (any-local-address? [this]
     "Utility routine to check if the InetAddress in a wildcard address.")
-  (local-link-address? [this]
+  (link-local-address? [this]
     "Utility routine to check if the InetAddress is an link local address.")
   (loopback-address? [this]
     "Utility routine to check if the InetAddress is a loopback address.")
@@ -95,7 +95,7 @@
    :host-address (fn [this] (.getHostAddress this))
    :hostname (fn [this] (.getHostName this))
    :any-local-address? (fn [this] (.isAnyLocalAddress this))
-   :local-link-address? (fn [this] (.isLinkLocalAddress this))
+   :link-local-address? (fn [this] (.isLinkLocalAddress this))
    :loopback-address? (fn [this] (.isLoopbackAddress this))
    :mc-global? (fn [this] (.isMCGlobal this))
    :mc-link-local? (fn [this] (.isMCLinkLocal this))

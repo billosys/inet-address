@@ -17,7 +17,7 @@
            (.hashCode address)))))
 
 (deftest local?
-  (address-core/local-link-address? (address-core/localhost)))
+  (address-core/link-local-address? (address-core/localhost)))
 
 (deftest loopback?
   (address-core/loopback-address? (address-core/loopback)))
