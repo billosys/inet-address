@@ -38,4 +38,4 @@
   (is (not (inet6/reachable? (make-test-host) 0))))
 
 (deftest scope-id
-  (is (= 0 (inet6/scope-id (make-test-host)))))
+  (is (zero? (inet6/scope-id (make-test-host)))))
