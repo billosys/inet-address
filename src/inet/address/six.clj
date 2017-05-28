@@ -107,7 +107,7 @@
     address-core/behaviour
     {:scoped-interface (fn [this] (.getScopedInterface this))
      :scope-id (fn [this] (.getScopeId this))
-     :ipv4-compatible-address (fn [this] (.isIPv4CompatibleAddress this))}))
+     :ipv4-compatible-address? (fn [this] (.isIPv4CompatibleAddress this))}))
 
 (extend Inet6Address IPV6Address behaviour)
 

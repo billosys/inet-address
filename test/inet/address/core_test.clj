@@ -1,10 +1,10 @@
 (ns inet.address.core-test
   (:require [clojure.test :refer :all]
-            [inet.address.core :as address-core]))
+            [inet.address.core :as ip-core]))
 
 (defn make-test-host
   []
-  (address-core/by-address
+  (ip-core/by-address
     "testhost"
     (byte-array [1 2 3 4])))
 
@@ -20,17 +20,14 @@
     (is (= (hash address)
            (.hashCode address)))))
 
-(deftest local?
-  (address-core/link-local-address? (address-core/localhost)))
-
 (deftest loopback?
-  (address-core/loopback-address? (address-core/loopback)))
+  (is (ip-core/loopback-address? (ip-core/loopback))))
 
 (deftest address
-  (is (= [1 2 3 4] (address-core/address (make-test-host)))))
+  (is (= [1 2 3 4] (ip-core/address (make-test-host)))))
 
 (deftest host-address
-  (is (= "1.2.3.4" (address-core/host-address (make-test-host)))))
+  (is (= "1.2.3.4" (ip-core/host-address (make-test-host)))))
 
 (deftest reachable?
-  (is (not (address-core/reachable? (make-test-host) 0))))
+  (is (not (ip-core/reachable? (make-test-host) 0))))

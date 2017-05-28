@@ -1,10 +1,10 @@
 (ns inet.address.four-test
   (:require [clojure.test :refer :all]
-            [inet.address.four :as address-four]))
+            [inet.address.four :as ipv4]))
 
 (defn make-test-host
   []
-  (address-four/by-address
+  (ipv4/by-address
     "testhost"
     (byte-array [1 2 3 4])))
 
@@ -20,17 +20,14 @@
     (is (= (hash address)
            (.hashCode address)))))
 
-(deftest local?
-  (address-four/link-local-address? (address-four/localhost)))
-
 (deftest loopback?
-  (address-four/loopback-address? (address-four/loopback)))
+  (is (ipv4/loopback-address? (ipv4/loopback))))
 
 (deftest address
-  (is (= [1 2 3 4] (address-four/address (make-test-host)))))
+  (is (= [1 2 3 4] (ipv4/address (make-test-host)))))
 
 (deftest host-address
-  (is (= "1.2.3.4" (address-four/host-address (make-test-host)))))
+  (is (= "1.2.3.4" (ipv4/host-address (make-test-host)))))
 
 (deftest reachable?
-  (is (not (address-four/reachable? (make-test-host) 0))))
+  (is (not (ipv4/reachable? (make-test-host) 0))))
