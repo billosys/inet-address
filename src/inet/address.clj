@@ -5,8 +5,7 @@
     [potemkin :refer [import-vars]])
   (:import (java.net InetAddress
                      Inet4Address
-                     Inet6Address
-                     NetworkInterface)))
+                     Inet6Address)))
 
 (import-vars
   [address-core
