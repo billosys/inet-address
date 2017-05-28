@@ -34,9 +34,22 @@
                               "\u001B[35m]\u001B[33m λ\u001B[m=> "))
         :welcome ~(do
                     (println (slurp "resources/text/banner.txt"))
-                    (println (slurp "resources/text/loading.txt")))}}}
+                    (println (slurp "resources/text/loading.txt")))}}
+    :test {
+      :plugins [
+        [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
+        [lein-kibit "0.1.5" :exclusions [org.clojure/clojure]]
+        [lein-ancient "0.6.10"]]}}
   :aliases {
+    "check-deps" ["with-profile" "+test" "ancient" "check" "all"]
+    "lint" ["with-profile" "+test" "kibit"]
     "docs" ["with-profile" "+docs" "do"
       ["marg" "--dir" "docs/current" "--file" "marginalia.html"]
       ["codox"]]
-    })
+    "build" ["with-profile" "+test" "do"
+      ["check-deps"]
+      ["lint"]
+      ["test"]
+      ["compile"]
+      ["docs"]
+      ["uberjar"]]})
