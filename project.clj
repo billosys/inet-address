@@ -10,7 +10,7 @@
   :profiles {
     :docs {
       :dependencies [
-        [systems.billo/superhero-codox-theme "0.3.0-SNAPSHOT"]]
+        [systems.billo/superhero-codox-theme "0.3.0"]]
       :plugins [
         [lein-codox "0.10.3"]
         [lein-marginalia "0.9.0"]]
@@ -22,7 +22,7 @@
         :metadata {:doc/format :markdown}}}
     :dev {
       :dependencies [
-        [clojusc/trifl "0.1.0-SNAPSHOT"]
+        [clojusc/trifl "0.1.0"]
         [org.clojure/tools.namespace "0.2.11"]]
       :source-paths [
         "dev-resources/src"
