@@ -15,22 +15,24 @@
        (into [])))
 
 (defn by-address
-  "Returns an `InetAddress`. In the arity-1 case, an object is given the
-  raw IP address. In the arity-2 case, an object is given based on the
-  provided host name and IP address.
+  "Returns an `InetAddress`.
+
+  In the arity-1 case, an object is given a vector of octets representing a
+  'raw' IP address.  In the arity-2 case, an object is given based on the
+  provided host name and a 'raw' IP address.
 
   Note: expected type of `addr` is a byte array, e.g.:
   ```clj
-  (by-address (byte-array [127 0 0 1]))
+  (by-address [127 0 0 1])
   ```
   or
   ```clj
-  (by-address \"localhost\" (byte-array [127 0 0 1]))
+  (by-address \"localhost\" [127 0 0 1])
   ```"
   ([addr]
-    (InetAddress/getByAddress addr))
+    (InetAddress/getByAddress (byte-array addr)))
   ([host addr]
-    (InetAddress/getByAddress host addr)))
+    (InetAddress/getByAddress host (byte-array addr))))
 
 (defn by-name
   "Determines the IP address of a host, given the host's name."

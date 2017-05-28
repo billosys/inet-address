@@ -29,12 +29,12 @@
     interface for the address type specified with `addr`.
 
   Note: as with `InetAddress`, and `Inet4Address`, the expected type of
-  `addr` is a byte array, e.g.:
+  `addr` is a vector of integers, e.g.:
   ```clj
-  (by-address \"localhost\" (byte-array [127 0 0 1]))
+  (by-address \"localhost\" [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1] 0)
   ```"
   [host addr scope-or-nif]
-  (Inet6Address/getByAddress host addr scope-or-nif))
+  (Inet6Address/getByAddress host (byte-array addr) scope-or-nif))
 
 (defn by-name
   "Determines the IP address of a host, given the host's name."
