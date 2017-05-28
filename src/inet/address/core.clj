@@ -63,7 +63,27 @@
     "Gets the host name for this IP address.")
   (any-local-address? [this]
     "Utility routine to check if the InetAddress in a wildcard address.")
-  )
+  (local-link-address? [this]
+    "Utility routine to check if the InetAddress is an link local address.")
+  (loopback-address? [this]
+    "Utility routine to check if the InetAddress is a loopback address.")
+  (mc-global? [this]
+    "Utility routine to check if the multicast address has global scope.")
+  (mc-link-local? [this]
+    "Utility routine to check if the multicast address has link scope.")
+  (mc-node-local? [this]
+    "Utility routine to check if the multicast address has node scope.")
+  (mc-org-local? [this]
+    "Utility routine to check if the multicast address has organization
+    scope.")
+  (mc-site-local? [this]
+    "Utility routine to check if the multicast address has site scope.")
+  (multicast-address? [this]
+    "Utility routine to check if the InetAddress is an IP multicast address.")
+  (reachable? [this timeout] [this net-iface ttl timeout]
+    "Test whether that address is reachable.")
+  (site-local-address? [this]
+    "Utility routine to check if the InetAddress is a site local address."))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Implementation   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -75,7 +95,19 @@
    :host-address (fn [this] (.getHostAddress this))
    :hostname (fn [this] (.getHostName this))
    :any-local-address? (fn [this] (.isAnyLocalAddress this))
-})
+   :local-link-address? (fn [this] (.isLinkLocalAddress this))
+   :loopback-address? (fn [this] (.isLoopbackAddress this))
+   :mc-global? (fn [this] (.isMCGlobal this))
+   :mc-link-local? (fn [this] (.isMCLinkLocal this))
+   :mc-node-local? (fn [this] (.isMCNodeLocal this))
+   :mc-org-local? (fn [this] (.isMCOrgLocal this))
+   :mc-site-local? (fn [this] (.isMCSiteLocal this))
+   :multicast-address? (fn [this] (.isMulticastAddress this))
+   :reachable? (fn ([this timeout]
+                    (.isReachable this timeout))
+                   ([this net-iface ttl timeout]
+                    (.isReachable this net-iface ttl timeout)))
+   :site-local-address? (fn [this] (.isSiteLocalAddress this))})
 
 (extend InetAddress Address behaviour)
 
