@@ -1,6 +1,6 @@
 (defproject systems.billo/inet-address "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "A Clojure wrapper for the family of Java InetAddress classes"
+  :url "https://github.com/billosys/inet-address"
   :license {
     :name "Eclipse Public License"
     :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -8,6 +8,10 @@
     [org.clojure/clojure "1.8.0"]
     [potemkin "0.4.3"]]
   :profiles {
+    :docs {
+      :plugins [
+        [lein-marginalia "0.9.0"]]}
+      :codox {}
     :dev {
       :dependencies [
         [clojusc/trifl "0.1.0-SNAPSHOT"]
@@ -22,4 +26,8 @@
                               "\u001B[35m]\u001B[33m λ\u001B[m=> "))
         :welcome ~(do
                     (println (slurp "resources/text/banner.txt"))
-                    (println (slurp "resources/text/loading.txt")))}}})
+                    (println (slurp "resources/text/loading.txt")))}}}
+  :aliases {
+    "docs" ["with-profile" "+docs" "do"
+      ["marg"]]
+    })
