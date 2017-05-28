@@ -1,4 +1,4 @@
-(ns inet.address.six-test
+(ns inet.test.address.six
   (:require
     [clojure.test :refer :all]
     [inet.address.six :as inet6]))
