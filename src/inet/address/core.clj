@@ -1,6 +1,6 @@
 (ns inet.address.core
-  (:require [potemkin :refer [import-vars]])
-  (:import (java.net InetAddress)))
+  (:import
+    (java.net InetAddress)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Static Methods   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -19,7 +19,7 @@
   raw IP address. In the arity-2 case, an object is given based on the
   provided host name and IP address.
 
-  Note: expected type of `addr` is byte array, e.g.:
+  Note: expected type of `addr` is a byte array, e.g.:
   ```clj
   (by-address (byte-array [127 0 0 1]))
   ```
