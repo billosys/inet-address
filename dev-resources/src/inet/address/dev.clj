@@ -1,9 +1,10 @@
 (ns inet.address.dev
   (:require
     [clojure.tools.namespace.repl :as repl]
-    [inet.address.core :as address-core]
-    [inet.address.four :as address-four]
-    [inet.address.six :as address-six]
+    [inet.address :as ip]
+    [inet.address.core :as ip-core]
+    [inet.address.four :as ipv4]
+    [inet.address.six :as ipv6]
     [trifl.java :refer [show-methods]])
   (:import (java.net InetAddress
                      Inet4Address
