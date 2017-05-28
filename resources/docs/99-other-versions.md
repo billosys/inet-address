@@ -12,5 +12,5 @@
 
 ## Marginalia
 
-* [Development](../current/uberdoc)
-* [0.1.0](../0.1.0/uberdoc)
+* [Development](../current/marginalia)
+* [0.1.0](../0.1.0/marginalia)
