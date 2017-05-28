@@ -1,6 +1,6 @@
-(ns inet.address-test
+(ns inet.address.core-test
   (:require [clojure.test :refer :all]
-            [inet.address :as address]))
+            [inet.address.core :as address]))
 
 (deftest a-test
   (testing "FIXME, I fail."
