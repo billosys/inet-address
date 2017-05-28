@@ -1,5 +1,6 @@
 (ns inet.address.dev
   (:require
+    [clojure.pprint :as pprint]
     [clojure.tools.namespace.repl :as repl]
     [inet.address :as ip]
     [inet.address.core :as ip-core]
