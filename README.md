@@ -12,6 +12,12 @@ Work with `InetAddress` objects in pure Clojure using Clojure programming
 idioms.
 
 
+## Documentation
+
+* [Source code, docstrings, and code comments](http://billo.systems/inet-address//current/marginalia) - published using [Marginalia](https://github.com/gdeer81/marginalia)
+* [API Reference Docs]() - published using [Codox](https://github.com/weavejester/codox)
+
+
 ## Usage
 
 Require the bits of `inet-address` you will need:
