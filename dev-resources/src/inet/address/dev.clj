@@ -6,7 +6,7 @@
     [inet.address.core :as inet-core]
     [inet.address.four :as inet4]
     [inet.address.six :as inet6]
-    [inet.interface :as interface]
+    [inet.interface :as netface]
     [trifl.java :refer [show-methods]])
   (:import (java.net InetAddress
                      Inet4Address
