@@ -34,5 +34,5 @@ your option) any later version.
 [tag-badge]: https://img.shields.io/github/tag/billosys/inet-address.svg
 [tag]: https://github.com/billosys/inet-address/tags
 [clojure-v]: https://img.shields.io/badge/clojure-1.8.0-blue.svg
-[clojars]: https://clojars.org/billosys/inet-address
-[clojars-badge]: https://img.shields.io/clojars/v/billosys/inet-address.svg
+[clojars]: https://clojars.org/systems.billo/inet-address
+[clojars-badge]: https://img.shields.io/clojars/v/systems.billo/inet-address.svg
