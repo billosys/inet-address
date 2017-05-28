@@ -6,7 +6,7 @@
   []
   (ipv4/by-address
     "testhost"
-    (byte-array [1 2 3 4])))
+    [1 2 3 4]))
 
 (deftest address->string
   (is (= "testhost/1.2.3.4" (str (make-test-host)))))
