@@ -1,11 +1,11 @@
-(ns inet.address.four-test
+(ns inet.test.address.core
   (:require
     [clojure.test :refer :all]
-    [inet.address.four :as inet4]))
+    [inet.address.core :as inet-core]))
 
 (defn make-test-host
   []
-  (inet4/by-address
+  (inet-core/by-address
     "testhost"
     [1 2 3 4]))
 
@@ -22,13 +22,13 @@
            (.hashCode address)))))
 
 (deftest loopback?
-  (is (inet4/loopback-address? (inet4/loopback))))
+  (is (inet-core/loopback-address? (inet-core/loopback))))
 
 (deftest address
-  (is (= [1 2 3 4] (inet4/address (make-test-host)))))
+  (is (= [1 2 3 4] (inet-core/address (make-test-host)))))
 
 (deftest host-address
-  (is (= "1.2.3.4" (inet4/host-address (make-test-host)))))
+  (is (= "1.2.3.4" (inet-core/host-address (make-test-host)))))
 
 (deftest reachable?
-  (is (not (inet4/reachable? (make-test-host) 0))))
+  (is (not (inet-core/reachable? (make-test-host) 0))))

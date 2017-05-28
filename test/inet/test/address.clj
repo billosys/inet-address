@@ -1,4 +1,4 @@
-(ns inet.address-test
+(ns inet.test.address
   (:require
     [clojure.test :refer :all]
     [inet.address :as inet]
