@@ -2,10 +2,7 @@
   (:require
     [inet.address.core :as address-core]
     [inet.address.six :as address-six]
-    [potemkin :refer [import-vars]])
-  (:import (java.net InetAddress
-                     Inet4Address
-                     Inet6Address)))
+    [potemkin :refer [import-vars]]))
 
 (import-vars
   [address-core
