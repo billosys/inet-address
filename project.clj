@@ -1,4 +1,4 @@
-(defproject systems.billo/inet-address "0.1.0"
+(defproject systems.billo/inet-address "0.1.1"
   :description "A Clojure wrapper for the family of Java InetAddress classes"
   :url "https://github.com/billosys/inet-address"
   :license {
